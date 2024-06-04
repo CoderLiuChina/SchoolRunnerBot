@@ -5,14 +5,14 @@
 
 /**
  * @brief Initialize queues and queue pointer groups
- *        During initialization, the first data is set to 0, the next address is NULL, and the pointer group is associated with the corresponding part
+ *        During initialization, the first data is set to 0x7F or 127, the next address is NULL, and the pointer group is associated with the corresponding part
  *
  * @param q
  * @param q_pointer
  */
 void Queue_Init(Queue *q, Queue_Pointer *q_pointer)
 {
-    q->data = 0x00;
+    q->data = 0x7F;
     q->next = NULL;
     q_pointer->TOP = q;
     q_pointer->END = q;
@@ -40,7 +40,7 @@ void Queue_Push(Queue_Pointer *q_pointer, uint8_t datapush)
 uint8_t Queue_Pop(Queue_Pointer *q_pointer)
 {
     uint8_t datapop;
-    if(q_pointer->TOP==q_pointer->END)
+    if (q_pointer->TOP == q_pointer->END || q_pointer->TOP->data == 127)
     {
         datapop = q_pointer->TOP->data;
         q_pointer->TOP->data = 127;

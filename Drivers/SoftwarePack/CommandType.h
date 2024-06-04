@@ -10,7 +10,7 @@
 
 #include "Motor.h"
 
-uint8_t ComData;
+extern uint8_t ComData;
 
 /**
  * @brief Command Structure

@@ -9,11 +9,11 @@
 
 #define BLUETOOTH_PORT &huart1
 
-uint8_t DataReceiveCache;
-uint8_t DataReceive;
+extern uint8_t DataReceiveCache;
+extern uint8_t DataReceive;
 
-Queue RxQueue;
-Queue_Pointer RxQueue_Pointer;
+extern Queue RxQueue;
+extern Queue_Pointer RxQueue_Pointer;
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart);
 void BluetoothInit(UART_HandleTypeDef *huart);

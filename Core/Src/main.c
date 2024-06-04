@@ -46,7 +46,13 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+uint8_t DataReceiveCache;
+uint8_t DataReceive;
 
+Queue RxQueue;
+Queue_Pointer RxQueue_Pointer;
+
+uint8_t ComData;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -103,7 +109,7 @@ int main(void)
     /* USER CODE BEGIN 3 */
     if(RxQueue_Pointer.END->data=='E')
     {
-      CommandDecode(RxQueue_Pointer);
+      CommandDecode(&RxQueue_Pointer);
     }
     else
       HAL_Delay(50);

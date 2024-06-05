@@ -6,6 +6,7 @@
 #include "main.h"
 
 #include "Queue.h"
+#include "Variables.h"
 
 #define BLUETOOTH_PORT &huart1
 

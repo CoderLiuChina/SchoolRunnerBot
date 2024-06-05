@@ -2,20 +2,26 @@
 
 #include "CommandType.h"
 
+
+/**
+ * @brief Pop the Command from RxQueue, Decode and build a Command struct with data
+ * 
+ * @param q 
+ */
 void CommandDecode(Queue_Pointer *q)
 {
-    char ComType = (char)Queue_Pop(q);
-    if(ComType==127)
-        return;
-    switch (ComType)
+    Command *ReturnCom = (Command *)malloc(sizeof(Command));
+    switch(Queue_Pop(q))
     {
-    case 'M':
-        ComType = Queue_Pop(q);
-        ComData = Queue_Pop(q);
-        MotorDirectionControl(ComType, ComData);
-        break;
-
-    default:
-        break;
+        case 'M':
+            ReturnCom->CommandHead = Queue_Pop(q);
+            ReturnCom->CommandData = Queue_Pop(q);
+            MotorDirectionControl(ReturnCom);
+            while (Queue_Pop(q) != 'E'){}
+            break;
+        default:
+            while(Queue_Pop(q)!='E'){}
+            break;
     }
+    
 }

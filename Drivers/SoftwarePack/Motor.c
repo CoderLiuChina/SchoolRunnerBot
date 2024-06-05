@@ -3,15 +3,16 @@
 
 #include "Motor.h"
 
+
 /**
- * @brief Change the direction of movement according to the command
- *        Steering is achieved by means of a motor differential
- *
- * @param MotorCommandHead
- * @param speed
+ * @brief  Control the operation of the motor
+ * 
+ * @param Com Command in struct
  */
-void MotorDirectionControl(char MotorCommandHead, uint8_t speed)
+void MotorDirectionControl(Command *Com)
 {
+    char MotorCommandHead = Com->CommandHead;
+    char speed = Com->CommandData;
     switch (MotorCommandHead)
     {
     case 'F':

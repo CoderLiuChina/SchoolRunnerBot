@@ -93,6 +93,9 @@
               },
               {
                 "path": "../Drivers/SoftwarePack/Queue.h"
+              },
+              {
+                "path": "../Drivers/SoftwarePack/Variables.h"
               }
             ],
             "folders": []

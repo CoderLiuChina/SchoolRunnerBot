@@ -7,10 +7,12 @@
 #include "main.h"
 #include "tim.h"
 
+#include "Variables.h"
+
 #define WHEEL_PWM &htim3
 #define WHEEL_L_CHANNEL TIM_CHANNEL_1
 #define WHEEL_R_CHANNEL TIM_CHANNEL_2
 
-void MotorDirectionControl(char MotorCommandHead, uint8_t speed);
+void MotorDirectionControl(Command *Com);
 
 #endif // !_MOTOR_H_
